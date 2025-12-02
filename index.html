@@ -5,59 +5,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Wanted Cocktail Menu</title>
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
+<!-- Western-style font similar to your original poster -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
 
+<style>
     body {
         margin: 0;
         padding: 0;
-        background: #e8dcc2;
+        background: #e7d7b1; /* light beige */
         font-family: 'IM Fell English SC', serif;
         text-align: center;
     }
 
     .poster {
         width: 90%;
-        max-width: 650px;
+        max-width: 700px;
         margin: 40px auto;
-        padding: 40px 20px;
-        background: url('https://i.imgur.com/2nQzQYd.jpg');
-        background-size: cover;
-        background-position: center;
-        border: 4px solid #3d2b1f;
-        box-shadow: 0 0 45px rgba(0,0,0,0.45);
-        filter: sepia(30%) contrast(105%);
+        padding: 20px;
+        background: #f5e6c8; /* inner poster color */
+        border: 3px solid #000;
+        box-shadow: 0 0 15px rgba(0,0,0,0.25);
     }
 
     h1 {
+        font-family: 'Cinzel Decorative', serif;
         font-size: 70px;
-        margin: 0 0 10px 0;
-        letter-spacing: 4px;
-        color: #3b2413;
-        text-shadow: 2px 2px 0 #d6c4a3;
-    }
-
-    .menu-box {
-        margin-top: 25px;
-        padding: 25px 15px;
-        background: rgba(255, 248, 235, 0.8);
-        border: 3px solid #3a2a1a;
-        box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
+        margin: 10px 0 20px 0;
+        color: #3a2a17;
+        letter-spacing: 3px;
     }
 
     .menu-item {
-        font-size: 24px;
+        font-size: 28px;
         margin: 12px 0;
-        color: #3b2413;
+        color: #2b1a10;
     }
 
     .footer {
         margin-top: 35px;
-        font-size: 48px;
-        font-weight: bold;
+        font-family: 'Cinzel Decorative', serif;
+        font-size: 55px;
+        color: #3a2a17;
         letter-spacing: 3px;
-        color: #3b2413;
-        text-shadow: 1px 1px 0 #dac5a5;
+    }
+
+    /* Add center box like your original poster */
+    .inner-box {
+        padding: 25px 15px;
+        border: 2px solid #000;
+        background: #f9ecd2;
+        margin-top: 10px;
     }
 </style>
 </head>
@@ -66,7 +63,7 @@
 <div class="poster">
     <h1>WANTED</h1>
 
-    <div class="menu-box">
+    <div class="inner-box">
         <div class="menu-item">Prickly Pear</div>
         <div class="menu-item">Amaretto Sour</div>
         <div class="menu-item">Upside Down Pineapple Cake</div>
