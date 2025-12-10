@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cocktail Menu</title>
+
 <style>
     body {
         font-family: 'Georgia', serif;
@@ -18,30 +19,40 @@
         max-width: 600px;
         margin: 40px auto;
         padding: 20px 30px;
-        background: #f5deb3;
-        border: 3px solid #3a2a1a;
-        box-shadow: 0 0 20px rgba(0,0,0,0.4);
+        background: #f3d9a4;
+        border: 4px solid #3a2a1a;
+        box-shadow: 0 0 25px rgba(0,0,0,0.4);
+        background-image: url('https://i.imgur.com/iUeJm6W.png');
+        background-size: cover;
     }
 
     h1 {
-        font-size: 60px;
+        font-size: 65px;
         font-weight: 900;
         margin-bottom: 20px;
-        letter-spacing: 4px;
+        letter-spacing: 5px;
         color: #3a2a1a;
+        text-shadow: 2px 2px 2px #00000033;
     }
 
     .menu-box {
-        background: #fffdf4;
+        background: #fffdf4d4;
         border: 3px solid #3a2a1a;
         padding: 25px;
         margin: 20px 0;
     }
 
     .menu-item {
-        font-size: 22px;
-        margin: 10px 0;
+        font-size: 24px;
+        margin: 12px 0;
         font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .menu-item:hover {
+        transform: scale(1.05);
+        color: #c0392b;
     }
 
     .footer {
@@ -52,33 +63,48 @@
     }
 </style>
 </head>
+
 <body>
 
 <div class="poster">
     <h1>WANTED</h1>
 
-    <div class="menu-box">
-
-        <div class="menu-item">Prickly Pear</div>
-        <div class="menu-item">Amaretto Sour</div>
-        <div class="menu-item">Upside Down Pineapple Cake</div>
-        <div class="menu-item">Old Fashioned</div>
-        <div class="menu-item">Honey Old Fashioned</div>
-        <div class="menu-item">DG’s Margarita</div>
-        <div class="menu-item">Coconut Margarita</div>
-        <div class="menu-item">Mocha Espresso Martini</div>
-        <div class="menu-item">Blue Hawaiian</div>
-        <div class="menu-item">Tequila Sunrise</div>
-        <div class="menu-item">White Russian</div>
-        <div class="menu-item">Vegas Bomb</div>
-        <div class="menu-item">Candy Watermelon Margarita</div>
-        <div class="menu-item">Green tea Cocktail</div>
-        <div class="menu-item">White tea Cocktail</div>
-
-    </div>
+    <div class="menu-box" id="menu"></div>
 
     <div class="footer">COCKTAIL MENU</div>
 </div>
+
+<script>
+    const drinks = [
+        "Prickly Pear",
+        "Amaretto Sour",
+        "Upside Down Pineapple Cake",
+        "Old Fashioned",
+        "Honey Old Fashioned",
+        "DG’s Margarita",
+        "Coconut Margarita",
+        "Mocha Espresso Martini",
+        "Blue Hawaiian",
+        "Tequila Sunrise",
+        "White Russian",
+        "Vegas Bomb",
+        "Candy Watermelon Margarita",
+        "Green Tea Cocktail",
+        "White Tea Cocktail"
+    ];
+
+    const menu = document.getElementById("menu");
+
+    drinks.forEach(drink => {
+        menu.innerHTML += `
+            <div class="menu-item" onclick="order('${drink}')">${drink}</div>
+        `;
+    });
+
+    function order(drink) {
+        window.location.href = "order.html?drink=" + encodeURIComponent(drink);
+    }
+</script>
 
 </body>
 </html>
