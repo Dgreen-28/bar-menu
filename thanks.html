@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <style>
+        body {
+            background-color: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        p {
+            font-size: 18px;
+            opacity: 0.85;
+        }
+
+        .tip-box {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 12px;
+        }
+
+        .tip-options button {
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 6px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .tip-options button:hover {
+            background-color: #666;
+        }
+
+        .back-btn {
+            margin-top: 30px;
+            background-color: #8B4513;
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            background-color: #A0522D;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Thank You!</h1>
+        <p>Your drink order has been sent to the bartender.</p>
+
+        <div class="tip-box">
+            <h3>Want to leave a tip?</h3>
+            <div class="tip-options">
+                <button onclick="alert('Thank you!')">$1</button>
+                <button onclick="alert('Thank you!')">$3</button>
+                <button onclick="alert('Thank you!')">$5</button>
+                <button onclick="alert('Thank you!')">Custom</button>
+            </div>
+        </div>
+
+        <a class="back-btn" href="index.html">Back to Menu</a>
+    </div>
+
+</body>
+</html>
