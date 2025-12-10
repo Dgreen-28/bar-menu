@@ -47,17 +47,25 @@
         margin: 20px 0;
     }
 
-    .menu-item {
-        font-size: 24px;
-        margin: 12px 0;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.2s;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        justify-content: center;
-    }
+.menu-item {
+    font-size: 24px;
+    margin: 18px 0;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    position: relative;
+    padding-left: 28px; /* room for bullet */
+}
+
+.menu-item::before {
+    content: "◦";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 26px;
+    line-height: 1;
+    color: #3a2a1a;
+}
 
     .menu-item span.bullet {
         font-size: 28px;
