@@ -41,19 +41,23 @@
             border-radius: 12px;
         }
 
-        .tip-options button {
+        .tip-box h3 {
+            margin-bottom: 15px;
+        }
+
+        .tip-options a {
+            display: block;
             background-color: #444;
             color: white;
-            border: none;
-            padding: 12px 20px;
-            margin: 6px;
+            padding: 14px;
+            margin: 8px 0;
             border-radius: 10px;
+            text-decoration: none;
             font-size: 16px;
-            cursor: pointer;
             transition: 0.2s;
         }
 
-        .tip-options button:hover {
+        .tip-options a:hover {
             background-color: #666;
         }
 
@@ -84,11 +88,13 @@
 
         <div class="tip-box">
             <h3>Want to leave a tip?</h3>
+
             <div class="tip-options">
-                <button onclick="alert('Thank you!')">$1</button>
-                <button onclick="alert('Thank you!')">$3</button>
-                <button onclick="alert('Thank you!')">$5</button>
-                <button onclick="alert('Thank you!')">Custom</button>
+                <!-- Replace YOURNAME with your real Cash App name -->
+                <a href="https://cash.app/$dg380" target="_blank">Tip on Cash App</a>
+
+                <!-- Replace with your actual Zelle link or instructions -->
+                <a href="https://enroll.zellepay.com/qr-codes?data=ewogICJhY3Rpb24iIDogInBheW1lbnQiLAogICJ0b2tlbiIgOiAiZGVjb3JleW9uLjI4QGdtYWlsLmNvbSIsCiAgIm5hbWUiIDogIkRFQ09SRVlPTiIKfQ==" target="_blank">Tip with Zelle</a>
             </div>
         </div>
 
