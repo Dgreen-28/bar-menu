@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Place Order</title>
+
+<style>
+    body { font-family: Georgia; text-align: center; padding: 40px; background: #f5deb3; }
+    input { padding: 12px; font-size: 18px; width: 70%; margin-top: 20px; }
+    button { margin-top: 25px; padding: 12px 25px; font-size: 20px; }
+</style>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc } 
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDhfb6fCqWlMbLjAQA3byGpelIyGlEjL7E",
+  authDomain: "bar-menu-76485.firebaseapp.com",
+  projectId: "bar-menu-76485",
+  storageBucket: "bar-menu-76485.firebasestorage.app",
+  messagingSenderId: "1018082681996",
+  appId: "1:1018082681996:web:caf04111d8a9ba155ec7a9",
+  measurementId: "G-GEVDYJ3WBT"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const drink = new URLSearchParams(window.location.search).get("drink");
+document.getElementById("drink-name").innerText = drink;
+
+window.placeOrder = async function() {
+    const name = document.getElementById("name").value;
+    if (!name) return alert("Please enter your name");
+
+    await addDoc(collection(db, "drinks"), {
+        name: drink,
+        orderer: name,
+        status: "queued"
+    });
+
+    window.location.href = "thanks.html";
+};
+</script>
+
+</head>
+
+<body>
+
+<h1>You Selected:</h1>
+<h2 id="drink-name"></h2>
+
+<input id="name" placeholder="Your name">
+
+<button onclick="placeOrder()">Place Order</button>
+
+<h3 style="margin-top:50px;">Payment Options</h3>
+
+<p>CashApp: <b>$dg380</b></p>
+<p>Zelle: <b>dgnation199@gmail.com</b></p>
+
+<img src="YOUR_ZELLE_QR_IMAGE_HERE" width="220">
+
+</body>
+</html>
