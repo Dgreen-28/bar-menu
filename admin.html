@@ -38,6 +38,21 @@
     h2 {
         margin-top: 50px;
     }
+
+    #deleteAllBtn {
+        background: #c0392b;
+        color: white;
+        padding: 10px 16px;
+        font-size: 18px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+
+    #deleteAllBtn:hover {
+        background: #e74c3c;
+    }
 </style>
 
 <script type="module">
@@ -49,8 +64,8 @@ import {
     orderBy,
     onSnapshot,
     doc,
-    updateDoc,
-    deleteDoc
+    deleteDoc,
+    getDocs
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -78,7 +93,7 @@ window.checkPassword = function () {
 };
 
 function loadOrders() {
-    const q = query(collection(db, "drinks"), orderBy("orderer"));
+    const q = query(collection(db, "drinks"), orderBy("timestamp", "asc"));
     const ordersDiv = document.getElementById("orders");
 
     onSnapshot(q, (snapshot) => {
@@ -93,9 +108,6 @@ function loadOrders() {
             div.innerHTML = `
                 <h3>${data.name}</h3>
                 <p><b>Orderer:</b> ${data.orderer}</p>
-                <p><b>Status:</b> ${data.status}</p>
-
-                <button onclick="markDone('${docSnap.id}')">Mark as Made</button>
                 <button onclick="removeOrder('${docSnap.id}')">Delete</button>
             `;
 
@@ -104,14 +116,18 @@ function loadOrders() {
     });
 }
 
-window.markDone = async function (id) {
-    await updateDoc(doc(db, "drinks", id), {
-        status: "made"
-    });
-};
-
 window.removeOrder = async function (id) {
     await deleteDoc(doc(db, "drinks", id));
+};
+
+window.deleteAll = async function () {
+    const confirmDelete = confirm("Are you sure you want to delete ALL drink orders?");
+    if (!confirmDelete) return;
+
+    const snapshot = await getDocs(collection(db, "drinks"));
+    snapshot.forEach(async (docSnap) => {
+        await deleteDoc(doc(db, "drinks", docSnap.id));
+    });
 };
 </script>
 
@@ -127,6 +143,9 @@ window.removeOrder = async function (id) {
 
 <div id="dashboard">
     <h1>Drink Order Queue</h1>
+
+    <button id="deleteAllBtn" onclick="deleteAll()">Delete All Orders</button>
+
     <div id="orders"></div>
 </div>
 
