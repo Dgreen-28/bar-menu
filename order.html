@@ -6,9 +6,58 @@
 <title>Place Order</title>
 
 <style>
-    body { font-family: Georgia; text-align: center; padding: 40px; background: #f5deb3; }
-    input { padding: 12px; font-size: 18px; width: 70%; margin-top: 20px; }
-    button { margin-top: 25px; padding: 12px 25px; font-size: 20px; }
+    body {
+        font-family: Georgia, serif;
+        background: #f5deb3;
+        text-align: center;
+        padding: 40px;
+        color: #3a2a1a;
+    }
+
+    .poster-box {
+        max-width: 600px;
+        margin: auto;
+        background: #fff8e1;
+        border: 4px solid #3a2a1a;
+        padding: 30px;
+        box-shadow: 0 0 35px rgba(0,0,0,0.35);
+    }
+
+    h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+        letter-spacing: 3px;
+    }
+
+    #drink-name {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #2c1a0f;
+    }
+
+    input {
+        padding: 15px;
+        font-size: 20px;
+        width: 80%;
+        border: 2px solid #3a2a1a;
+        background: #fffef6;
+        margin-top: 20px;
+    }
+
+    button {
+        margin-top: 30px;
+        padding: 14px 28px;
+        font-size: 22px;
+        background: #3a2a1a;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #5a422c;
+    }
 </style>
 
 <script type="module">
@@ -29,17 +78,20 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const drink = new URLSearchParams(window.location.search).get("drink");
-document.getElementById("drink-name").innerText = drink;
+const drink = new URLSearchParams(window.location.search).get("drink") || "Unknown Drink";
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("drink-name").textContent = drink;
+});
 
 window.placeOrder = async function() {
-    const name = document.getElementById("name").value;
+    const name = document.getElementById("name").value.trim();
     if (!name) return alert("Please enter your name");
 
     await addDoc(collection(db, "drinks"), {
         name: drink,
         orderer: name,
-        status: "queued"
+        status: "queued",
+        timestamp: Date.now()
     });
 
     window.location.href = "thanks.html";
@@ -50,19 +102,14 @@ window.placeOrder = async function() {
 
 <body>
 
-<h1>You Selected:</h1>
-<h2 id="drink-name"></h2>
+<div class="poster-box">
+    <h1>YOU SELECTED</h1>
+    <div id="drink-name"></div>
 
-<input id="name" placeholder="Your name">
+    <input id="name" placeholder="Enter your name">
 
-<button onclick="placeOrder()">Place Order</button>
-
-<h3 style="margin-top:50px;">Payment Options</h3>
-
-<p>CashApp: <b>$dg380</b></p>
-<p>Zelle: <b>dgnation199@gmail.com</b></p>
-
-<img src="YOUR_ZELLE_QR_IMAGE_HERE" width="220">
+    <button onclick="placeOrder()">Place Order</button>
+</div>
 
 </body>
 </html>
