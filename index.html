@@ -116,10 +116,8 @@
 
     drinks.forEach(drink => {
         menu.innerHTML += `
-            <div class="menu-item" onclick="order('${drink}')">
-                <span class="bullet">◦</span> ${drink}
-            </div>
-        `;
+            <div class="menu-item" onclick="order('${drink}')">${drink}</div>
+`;
     });
 
     function order(drink) {
